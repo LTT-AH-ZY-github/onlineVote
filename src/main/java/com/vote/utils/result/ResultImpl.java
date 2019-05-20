@@ -1,4 +1,7 @@
 package com.vote.utils.result;
+
+import java.util.Map;
+
 /**
 * @author LTT-AH-ZY
 * @version 创建时间：2019年5月20日 上午1:03:52
@@ -7,4 +10,6 @@ package com.vote.utils.result;
 */
 public interface ResultImpl {
 	public String toJson();
+	
+	public Map<String,Object> toMap();
 }

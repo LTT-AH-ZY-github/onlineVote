@@ -1,4 +1,8 @@
 package com.vote.utils.result;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
 * @author LTT-AH-ZY
 * @version 创建时间：2019年5月20日 上午1:00:05
@@ -6,8 +10,8 @@ package com.vote.utils.result;
 * @类说明
 */
 public class Result implements ResultImpl{
-	private int code;
-	private String msg;
+	public int code;
+	public String msg;
 	
 	public Result(int code,String msg) {
 		this.code = code;
@@ -39,5 +43,12 @@ public class Result implements ResultImpl{
 
 	public String toJson() {
 		return String.format("{\"code\": %d, \"msg\": \"%s\"}", code, msg);
+	}
+
+	public Map<String, Object> toMap() {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("code", code);
+		map.put("msg", msg);
+		return map;
 	}
 }

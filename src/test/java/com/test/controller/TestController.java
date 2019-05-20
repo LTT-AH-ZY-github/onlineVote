@@ -1,7 +1,12 @@
 package com.test.controller;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.vote.utils.result.OtherResult;
 
 /**
 * @author LTT-AH-ZY
@@ -13,7 +18,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/test")
 public class TestController {
 	@RequestMapping(value="/index")
-	public String index() {
-		return "login/login";
+	public @ResponseBody String index() {
+		return new OtherResult(200, "获取成功", 123).toJson();
+	}
+	
+	@RequestMapping(value="/index2")
+	public @ResponseBody Map<String,Object> index2() {
+		return new OtherResult(200, "获取成功", 123).toMap();
 	}
 }
