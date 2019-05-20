@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.vote.mapper.UserloginMapper" >
+  <resultMap id="BaseResultMap" type="com.vote.po.Userlogin" >
+    <id column="_uid" property="uid" jdbcType="INTEGER" />
+    <result column="_username" property="username" jdbcType="VARCHAR" />
+    <result column="_password" property="password" jdbcType="VARCHAR" />
+    <result column="_token" property="token" jdbcType="VARCHAR" />
+    <result column="_phone" property="phone" jdbcType="VARCHAR" />
+    <result column="_email" property="email" jdbcType="VARCHAR" />
+    <result column="_uservisitCode" property="uservisitcode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    _uid, _username, _password, _token, _phone, _email, _uservisitCode
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.vote.po.UserloginExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from _userlogin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from _userlogin
+    where _uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from _userlogin
+    where _uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.vote.po.UserloginExample" >
+    delete from _userlogin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.vote.po.Userlogin" >
+    insert into _userlogin (_uid, _username, _password, 
+      _token, _phone, _email, 
+      _uservisitCode)
+    values (#{uid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{token,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{uservisitcode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.vote.po.Userlogin" >
+    insert into _userlogin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        _uid,
+      </if>
+      <if test="username != null" >
+        _username,
+      </if>
+      <if test="password != null" >
+        _password,
+      </if>
+      <if test="token != null" >
+        _token,
+      </if>
+      <if test="phone != null" >
+        _phone,
+      </if>
+      <if test="email != null" >
+        _email,
+      </if>
+      <if test="uservisitcode != null" >
+        _uservisitCode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="uservisitcode != null" >
+        #{uservisitcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.vote.po.UserloginExample" resultType="java.lang.Integer" >
+    select count(*) from _userlogin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update _userlogin
+    <set >
+      <if test="record.uid != null" >
+        _uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.username != null" >
+        _username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        _password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.token != null" >
+        _token = #{record.token,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        _phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        _email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uservisitcode != null" >
+        _uservisitCode = #{record.uservisitcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update _userlogin
+    set _uid = #{record.uid,jdbcType=INTEGER},
+      _username = #{record.username,jdbcType=VARCHAR},
+      _password = #{record.password,jdbcType=VARCHAR},
+      _token = #{record.token,jdbcType=VARCHAR},
+      _phone = #{record.phone,jdbcType=VARCHAR},
+      _email = #{record.email,jdbcType=VARCHAR},
+      _uservisitCode = #{record.uservisitcode,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.vote.po.Userlogin" >
+    update _userlogin
+    <set >
+      <if test="username != null" >
+        _username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        _password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null" >
+        _token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        _phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        _email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="uservisitcode != null" >
+        _uservisitCode = #{uservisitcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where _uid = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.vote.po.Userlogin" >
+    update _userlogin
+    set _username = #{username,jdbcType=VARCHAR},
+      _password = #{password,jdbcType=VARCHAR},
+      _token = #{token,jdbcType=VARCHAR},
+      _phone = #{phone,jdbcType=VARCHAR},
+      _email = #{email,jdbcType=VARCHAR},
+      _uservisitCode = #{uservisitcode,jdbcType=VARCHAR}
+    where _uid = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>
