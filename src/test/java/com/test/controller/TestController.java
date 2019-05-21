@@ -1,5 +1,6 @@
 package com.test.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class TestController {
 	
 	@RequestMapping(value="/index2")
 	public @ResponseBody Map<String,Object> index2() {
-		return new OtherResult(200, "获取成功", 123).toMap();
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("code", 100);
+		map.put("msg", "测试");
+		return new OtherResult(200, "获取成功", map).toMap();
 	}
 }

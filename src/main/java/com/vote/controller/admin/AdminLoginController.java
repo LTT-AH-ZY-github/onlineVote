@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.vote.interceptor.IPFilter;
 import com.vote.po.Userlogin;
 import com.vote.service.admin.adminLoginService;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -24,6 +25,7 @@ public class AdminLoginController {
 	private adminLoginService adminloginService;
 	
 	@RequestMapping(value="/index")
+	@IPFilter(allow= {"127.0.0.1","192.168.2.4"})
 	@ApiOperation(value = "管理员登录", httpMethod = "POST",notes = "获取登录姓名。。。")
 	public String index() {
 		try {

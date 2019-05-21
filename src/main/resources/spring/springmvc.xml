@@ -76,20 +76,21 @@
 	<!-- <bean class="com.medical.exception.CustomExceptionResolver"></bean> -->
 	
 	<!--拦截器 -->
-	<!-- <mvc:interceptors>
-		多个拦截器,顺序执行
-		登陆认证拦截器
+	<mvc:interceptors>
+		<!-- 多个拦截器,顺序执行 -->
+		<!-- 登陆认证拦截器 -->
 		<mvc:interceptor>
-			/**表示所有url包括子url路径
-			<mvc:mapping path="/Main/*"/>
-			<bean class="com.medical.interceptor.LoginInterceptor"></bean>
-			
+			<!--表示所有url包括子url路径-->
+			<mvc:mapping path="/admin/*"/>
+			<bean class="com.vote.interceptor.AuthorityIPInterceptor"></bean>
 		</mvc:interceptor>
+		
 		<mvc:interceptor>
-			<mvc:mapping path="/Main/*/*"/>
-			<bean class="com.medical.interceptor.LoginInterceptor"></bean>
+			<!--表示所有url包括子url路径-->
+			<mvc:mapping path="/admin/**/**"/>
+			<bean class="com.vote.interceptor.AuthorityIPInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors> -->
+	</mvc:interceptors>
 	
 	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">  
         <property name="messageConverters">  
