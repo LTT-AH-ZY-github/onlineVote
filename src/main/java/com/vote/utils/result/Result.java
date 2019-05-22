@@ -4,11 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月20日 上午1:00:05
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:Result
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 public class Result implements ResultImpl{
 	public int code;
 	public String msg;

@@ -12,11 +12,12 @@ import com.vote.po.Userlogin;
 import com.vote.service.LoginService;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月8日 下午2:52:12
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:LoginServiceImpl
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 @Service
 public class LoginServiceImpl implements LoginService {
 

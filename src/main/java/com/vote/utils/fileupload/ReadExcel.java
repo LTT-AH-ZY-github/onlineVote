@@ -20,11 +20,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月19日 下午6:26:24
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:ReadExcel
+ * @Description:TODO 读取EXCEL
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 public class ReadExcel {
 	//Excel总行数
 	private Integer totalRows = 0;

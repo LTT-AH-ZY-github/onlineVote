@@ -7,11 +7,12 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月21日 下午4:37:43
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:IPFilter
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 @Documented
 @Target({ElementType.TYPE,ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)

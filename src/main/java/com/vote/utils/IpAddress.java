@@ -5,11 +5,12 @@ import java.io.IOException;
 import javax.servlet.http.HttpServletRequest;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月21日 下午4:08:11
-* @version 1.0
-* @类说明 
-*/
+ * 
+ * @ClassName:IpAddress
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 public class IpAddress {
 	
 	

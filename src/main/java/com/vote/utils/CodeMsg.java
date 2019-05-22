@@ -1,10 +1,11 @@
 package com.vote.utils;
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年4月25日 下午9:07:55
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:CodeMsg
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 public class CodeMsg {
 	private Integer code;
 	private String msg;

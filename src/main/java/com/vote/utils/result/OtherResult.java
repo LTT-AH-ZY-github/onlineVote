@@ -6,11 +6,12 @@ import java.util.Map;
 import com.google.gson.GsonBuilder;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月20日 下午11:56:02
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:OtherResult
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 public class OtherResult extends Result {
 
 	public Object data = null;

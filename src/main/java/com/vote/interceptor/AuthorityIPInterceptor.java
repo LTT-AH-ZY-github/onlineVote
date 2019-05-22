@@ -13,11 +13,12 @@ import com.google.common.collect.Lists;
 import com.vote.utils.IpAddress;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月21日 下午4:43:30
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:AuthorityIPInterceptor
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 public class AuthorityIPInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception {

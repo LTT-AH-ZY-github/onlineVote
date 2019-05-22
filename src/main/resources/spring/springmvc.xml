@@ -2,20 +2,27 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xmlns:jee="http://www.springframework.org/schema/jee"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+	
 	<!-- 配置Controller扫描 -->
 	<context:component-scan base-package="com.vote.controller,com.test.controller" ></context:component-scan>
-	<!-- <context:component-scan base-package="com.vote.controller.admin" ></context:component-scan> -->
-	
-	<!--< context:property-placeholder location="classpath:resource.properties" /> -->
 	
 	<!-- 配置注解驱动 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
-	<bean class="com.vote.tools.swagger.SwaggerConfig" />
+	<!-- swagger配置 -->
+	<bean class="com.vote.utils.swagger.SwaggerConfig" />
+	
+	<!-- 配置好处理器 -->
+	<bean id="websocketHandler" class="com.vote.utils.websocket.WebSocketHandler"/>
+	
 	<!-- 对静态资源放行  -->
 	<mvc:resources location="/static_resource/" mapping="/static_resource/**"/>
 	
@@ -25,7 +32,7 @@
 	<!-- 配置视图解析器 -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 前缀 -->
-		<property name="prefix" value="/view/" />
+		<property name="prefix" value="/WEB-INF/view/" />
 		<!-- 后缀 -->
 		<property name="suffix" value=".jsp" />
 	</bean>
@@ -38,79 +45,26 @@
 		</property>
 	</bean>
 	
-	<!-- 自定义参数绑定 -->
-	<!-- <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-		转换器
-		<property name="converters">
-			<list>
-				日期类型转换
-				<bean class="com.medical.controller.converter.CustomDateConverter"/>
-				<bean class="com.medical.controller.converter.CustomDateConverter2"/>
-			</list>
-		</property>
-	</bean> -->
-	<!-- 校验器 -->
-	<!-- <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-		hibernate校验器
-		<property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
-		指定校验使用的资源文件，在文件中配置校验错误信息，如果不指定则默认使用classpath下的ValidationMessages.properties
-		<property name="validationMessageSource" ref="messageSource"/>
-	</bean> -->
-	<!-- 校验错误信息配置文件 -->
-	<!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-		资源文件名
-		<property name="basenames">   
-       	 <list>    
-            <value>classpath:CustomValidationMessages</value> 
-       	 </list>   
-    	</property>
-		资源文件编码格式
-		<property name="fileEncodings" value="utf-8" />
-		对资源文件内容缓存时间，单位秒
-		<property name="cacheSeconds" value="120" />
-		<property name="useCodeAsDefaultMessage" value="true" />
-	</bean> -->
-	<!-- 全局异常处理器
-	只要实现HandlerExceptionResolver接口就是全局异常处理器
-	 -->
-	<!-- <bean class="com.medical.exception.CustomExceptionResolver"></bean> -->
-	
+	<!-- 配置WebSocket拦截器 -->
+    <websocket:handlers>
+    	<!-- 连接的URL 这里的handler是上面注解配置的WebSocketHandler处理器的id -->
+        <websocket:mapping path="/websocket/socketServer" handler="websocketHandler"/>
+        <websocket:handshake-interceptors>
+            <bean class="com.vote.utils.websocket.WebSocketHandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+    </websocket:handlers>
+    
 	<!--拦截器 -->
 	<mvc:interceptors>
 		<!-- 多个拦截器,顺序执行 -->
 		<!-- 登陆认证拦截器 -->
 		<mvc:interceptor>
-			<!--表示所有url包括子url路径-->
-			<mvc:mapping path="/admin/*"/>
+			<!--**表示所有url包括子url路径-->
+			<!-- IP限制拦截器 -->
+			<mvc:mapping path="/admin/**"/>
 			<bean class="com.vote.interceptor.AuthorityIPInterceptor"></bean>
 		</mvc:interceptor>
 		
-		<mvc:interceptor>
-			<!--表示所有url包括子url路径-->
-			<mvc:mapping path="/admin/**/**"/>
-			<bean class="com.vote.interceptor.AuthorityIPInterceptor"></bean>
-		</mvc:interceptor>
 	</mvc:interceptors>
-	
-	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">  
-        <property name="messageConverters">  
-            <list>
-                <bean class="org.springframework.http.converter.StringHttpMessageConverter">  
-                    <property name="supportedMediaTypes">  
-                        <list>  
-                            <value>text/html;charset=UTF-8</value>  
-                        </list>  
-                    </property>  
-                </bean>
-                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
-                    <property name="supportedMediaTypes">  
-                        <list>  
-                            <value>application/json;charset=UTF-8</value>  
-                        </list>  
-                    </property>  
-                </bean>  
-            </list>  
-        </property>  
-    </bean> -->
 </beans>
 	

@@ -16,11 +16,12 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月8日 下午2:41:19
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:loginController
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 @Controller
 @RequestMapping(value="/common")
 public class loginController {

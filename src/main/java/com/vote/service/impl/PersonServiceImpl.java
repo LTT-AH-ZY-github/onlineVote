@@ -10,11 +10,12 @@ import com.vote.po.Person;
 import com.vote.service.PersonService;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月9日 下午1:16:31
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:PersonServiceImpl
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 @Service
 public class PersonServiceImpl implements PersonService{
 

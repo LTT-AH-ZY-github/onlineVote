@@ -1,10 +1,11 @@
 package com.vote.utils.mail;
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年4月25日 下午8:31:24
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:InitVariable
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 public class InitVariable {
 	//163邮箱的host地址
 	public static String Mail_HOST = "smtp.163.com";

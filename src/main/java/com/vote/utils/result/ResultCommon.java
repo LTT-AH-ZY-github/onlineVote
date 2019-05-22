@@ -1,10 +1,11 @@
 package com.vote.utils.result;
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月20日 上午12:58:14
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:ResultCommon
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 public class ResultCommon {
 	public final static int CODE_SUCCESS = 200;
     public final static int CODE_ERROR = 500;

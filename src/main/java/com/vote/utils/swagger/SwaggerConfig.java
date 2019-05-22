@@ -1,4 +1,4 @@
-package com.vote.tools.swagger;
+package com.vote.utils.swagger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,11 +11,12 @@ import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 
 /**
-* @author LTT-AH-ZY
-* @version 创建时间：2019年5月17日 下午10:54:10
-* @version 1.0
-* @类说明
-*/
+ * 
+ * @ClassName:SwaggerConfig
+ * @Description:TODO
+ * @author LTT-AH-ZY https://github.com/LTT-AH-ZY-github
+ * @date 2019年5月22日
+ */
 @Configuration
 @EnableSwagger
 @EnableWebMvc
